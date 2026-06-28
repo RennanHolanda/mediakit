@@ -219,23 +219,26 @@
     .about-img-wrap {
       position: relative;
     }
+    
+.about-img-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        
+  object-position: center top; 
+  border-radius: 16px;
+}
+.about-img-placeholder {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 4/5;
+  overflow: hidden; 
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  position: relative;
+}
 
-    .about-img-placeholder {
-      width: 100%;
-      aspect-ratio: 4/5;
-      background: var(--card);
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
+.about-img-placeholder i { font-size: 3rem; color: var(--primary); }
 
-    .about-img-placeholder i { font-size: 3rem; color: var(--primary); }
 
     .about-tag {
       position: absolute;
@@ -575,6 +578,34 @@
     .contact-link.email { border-color: var(--primary); color: var(--primary); }
     .contact-link.instagram { border-color: #e1306c; color: #e1306c; }
 
+    #btn-topo {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: #e63946; /* troque pela sua cor primária */
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 999;
+}
+
+#btn-topo.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#btn-topo:hover {
+  transform: translateY(-4px);
+}
+
     /* ── FOOTER ── */
     footer {
       text-align: center;
@@ -613,7 +644,7 @@
   <section class="hero" id="inicio">
     <div class="container">
       <img
-        src="images/WhatsApp Image 2026-05-24 at 18.03.51.jpeg"
+        src="images\IMG_20260118_140347.jpg"
         alt="Bruno Rennan"
         class="hero-avatar"
       />
@@ -635,8 +666,8 @@
       <div class="about-grid">
         <div class="about-img-wrap">
           <div class="about-img-placeholder">
-            <i class="fas fa-user-circle"></i>
-            <span>Sua foto aqui</span>
+              <img
+        src="images\IMG_20260118_140347.jpg"/>
           </div>
           <div class="about-tag">🚗 Nicho Automotivo</div>
         </div>
@@ -673,7 +704,7 @@
       <div class="metrics-grid">
         <div class="metric-card">
           <div class="metric-icon"><i class="fas fa-users"></i></div>
-          <div class="metric-value">134k</div>
+          <div class="metric-value">139k</div>
           <div class="metric-label">Seguidores Totais</div>
         </div>
         <div class="metric-card">
@@ -771,7 +802,7 @@
         <div class="platform-name">Instagram</div>
         <div class="platform-handle">@brunoautodicas</div>
         <div class="platform-stats">
-          <div class="pstat"><span>Seguidores</span><span>100K</span></div>
+          <div class="pstat"><span>Seguidores</span><span>105K</span></div>
           <div class="pstat"><span>Alcance médio</span><span>13Mi</span></div>
           <div class="pstat"><span>Engajamento</span><span>1%</span></div>
         </div>
@@ -860,7 +891,8 @@
   </section>
 
   <!-- DEPOIMENTOS -->
-  <section id="depoimentos">
+
+    <!--<section id="depoimentos">
     <div class="container">
       <div class="section-header">
         <p class="section-label">Depoimentos</p>
@@ -931,6 +963,20 @@
   <footer>
     <p>© 2025 <span>Bruno Rennan</span> · @brunoautodicas · Todos os direitos reservados.</p>
   </footer>
+  <button id="btn-topo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+      ↑
+    </button>
 
+    <script>
+      const btnTopo = document.getElementById('btn-topo');
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          btnTopo.classList.add('visible');
+        } else {
+          btnTopo.classList.remove('visible');
+        }
+      });
+    </script>
 </body>
 </html>
